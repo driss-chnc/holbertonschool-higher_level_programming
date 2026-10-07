@@ -16,15 +16,13 @@ if __name__ == "__main__":
 
     cursor = db.cursor()
 
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(
+    query = "SELECT * FROM states WHERE BINARY name = '{}' ORDER BY id ASC".format(
         sys.argv[4]
     )
 
     cursor.execute(query)
 
-    results = cursor.fetchall()
-
-    for row in results:
+    for row in cursor.fetchall():
         print(row)
 
     cursor.close()
