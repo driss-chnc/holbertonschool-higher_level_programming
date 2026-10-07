@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""List states matching an argument from a MySQL database."""
 
 import MySQLdb
 import sys
