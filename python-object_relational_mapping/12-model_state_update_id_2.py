@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Update the name of a State object."""
 
 import sys
 from sqlalchemy import create_engine
