@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""List all cities with their state."""
+"""List all cities by state."""
 
 import sys
 from sqlalchemy import create_engine
@@ -22,11 +22,13 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    cities = session.query(City).join(State).order_by(City.id).all()
+    results = session.query(City, State).join(
+        State, City.state_id == State.id
+    ).order_by(City.id).all()
 
-    for city in cities:
+    for city, state in results:
         print("{}: ({}) {}".format(
-            city.state.name,
+            state.name,
             city.id,
             city.name
         ))
