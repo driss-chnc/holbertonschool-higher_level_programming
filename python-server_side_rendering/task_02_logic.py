@@ -10,14 +10,9 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/items')
-def items():
-    with open('items.json', 'r') as file:
-        data = json.load(file)
-
-    items_list = data.get('items', [])
-
-    return render_template('items.html', items=items_list)
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 
 @app.route('/contact')
@@ -30,7 +25,9 @@ def items():
     with open('items.json', 'r') as file:
         data = json.load(file)
 
-    return render_template('items.html', items=data['items'])
+    items_list = data.get('items', [])
+
+    return render_template('items.html', items=items_list)
 
 
 if __name__ == '__main__':
